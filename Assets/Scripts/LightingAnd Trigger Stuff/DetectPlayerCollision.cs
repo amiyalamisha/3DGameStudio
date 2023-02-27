@@ -8,7 +8,7 @@ using UnityEngine;
 public class DetectPlayerCollision : MonoBehaviour
 {
 
-    public event Action<string> playerEnter =   delegate { };
+    public event Action<string> playerEnter = delegate { };
     public event Action<string> playerExit = delegate { };
 
 
@@ -18,7 +18,7 @@ public class DetectPlayerCollision : MonoBehaviour
     public GameObject assignedLight;
     public int assignedLightID;
 
-
+    public string vCamToSwitch;
 
     public void Awake()
     {
@@ -38,12 +38,23 @@ public class DetectPlayerCollision : MonoBehaviour
             }
             else { LightManager.instance.TurnOnLight(assignedLightID); Debug.Log("use ID"); }
 
+
         }
 
 
 
-            playerEnter?.Invoke("Something");
+        playerEnter?.Invoke("Something");
 
+        if(vCamToSwitch != "" && vCamToSwitch == "CM vcam1")
+        {
+            Debug.Log("cam swtich");
+
+            CameraManager.instance.SwitchCamera(vCamToSwitch);
+        }
+        else if(vCamToSwitch != "" && vCamToSwitch == "CM vcam1")
+        {
+            CameraManager.instance.SwitchCameraToMain();
+        }
 
     }
     
