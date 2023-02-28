@@ -46,15 +46,15 @@ public class CameraManager : MonoBehaviour
 
     public void SwitchCameraToMain()
     {
-        for(int i = 0; i< vCams.Length; i++)
+        for(int i = 0; i< vCams.Count; i++)
         {
             if (vCams[i].name != "cam name")
             {
-                vCams[i].SetActive(false);
+                vCams[i].gameObject.SetActive(false);
             }
             else
             {
-                vCams[i].SetActive(true);
+                vCams[i].gameObject.SetActive(true);
             }
         }
     }
