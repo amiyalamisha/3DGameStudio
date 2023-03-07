@@ -11,12 +11,16 @@ public class CameraManager : MonoBehaviour
     public List<CinemachineVirtualCamera> vCams;
     public DetectPlayerCollision[] playerTriggers;
 
+    private string currentCam;
+
     [SerializeField]
     //private GameObject[] vCams; 
 
     //singleton
     private void Awake()
     {
+        // ANOTHER WAY TO SWITCH CAMERAS
+       // vCams[1].Priority = 100;
 
         if (instance != null && instance != this)
         {
@@ -31,17 +35,20 @@ public class CameraManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void SwitchCamera(string camName)
+    public void SwitchCamera(string camName1) //string camName2)
     {
-
         /*
-        for(int i = 0; i < camName.Length; i++)
+        // make a list of all cameras in scene then make sure they are all off to then activate the right camera
+        for(int i = 0; i < camName1.Length; i++)
         {
-            if (camName[i].name != camName)
+            if (camName1[i].name != camName1)
             {
-                camName[i].SetActive(false);
+                camName1[i].SetActive(false);
             }
+        
         }*/
+
+
     }
 
     public void SwitchCameraToMain()
