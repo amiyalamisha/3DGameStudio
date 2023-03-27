@@ -18,6 +18,9 @@ public class DetectPlayerCollision : MonoBehaviour
     public GameObject assignedLight;
     public int assignedLightID;
 
+    public GameObject assignedTrap;
+    public int assignedTrapID;
+
     public string vCamToSwitch;
 
     public void Awake()
@@ -31,14 +34,14 @@ public class DetectPlayerCollision : MonoBehaviour
     {
         if (other == PlayerCollisionObject)
         {
-
             if (assignedLight)
             {
                 LightManager.instance.TurnOnLight(assignedLight);
             }
-            else { LightManager.instance.TurnOnLight(assignedLightID); Debug.Log("use ID"); }
-
-
+            else { 
+                LightManager.instance.TurnOnLight(assignedLightID); 
+                Debug.Log("use ID"); 
+            }
         }
 
 

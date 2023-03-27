@@ -38,6 +38,8 @@ public class TriggerManager : MonoBehaviour
         foreach (TriggerAction Ta in TriggersInScene)
         {
             Ta.TriggerObject.assignedLight = Ta.light.gameObject;
+            //Ta.TriggerObject.
+
 
             Ta.TriggerObject.playerEnter += TriggerObservation;
             Ta.TriggerObject.playerExit += TriggerObservation;
