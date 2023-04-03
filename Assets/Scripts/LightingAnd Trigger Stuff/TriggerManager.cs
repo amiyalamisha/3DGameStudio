@@ -12,6 +12,10 @@ public class TriggerManager : MonoBehaviour
     public static TriggerManager instance;
     public List<TriggerAction> TriggersInScene;
 
+    public GameObject flowers;
+    public Rigidbody bodyProjectile;
+    public Transform startPos;
+
 
     private void Awake()
     {
@@ -52,13 +56,15 @@ public class TriggerManager : MonoBehaviour
     
     public void TriggerObservation(string message) 
     {
-        Debug.Log(message);
+        //Debug.Log(message);
         Debug.Log("Observeration worked");
     
     }
 
     public void FlowerBomb()
     {
-
+        GameObject newFlowers = Instantiate(flowers, startPos.position, Quaternion.identity);
+        //newFlowers.transform.position = new Vector3(0, 5f * -1 * Time.deltaTime, 0);
+        Debug.Log("flowerbomb");
     }
 }

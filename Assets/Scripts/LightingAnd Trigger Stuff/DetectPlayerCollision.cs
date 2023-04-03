@@ -7,10 +7,7 @@ using UnityEngine;
 
 public class DetectPlayerCollision : MonoBehaviour
 {
-
-    public event Action<string> playerEnter = delegate { };
-    public event Action<string> playerExit = delegate { };
-
+    private TriggerManager triggerManager;
 
     public GameObject Player;
     public CharacterController PlayerCollisionObject;
@@ -22,6 +19,14 @@ public class DetectPlayerCollision : MonoBehaviour
     public int assignedTrapID;
 
     public string vCamToSwitch;
+
+    public event Action<string> playerEnter = delegate { };
+    public event Action<string> playerExit = delegate { };
+
+    void Start()
+    {
+        triggerManager = TriggerManager.instance;
+    }
 
     public void Awake()
     {
@@ -36,7 +41,7 @@ public class DetectPlayerCollision : MonoBehaviour
         {
             if (assignedTrap)
             {
-
+                triggerManager.FlowerBomb();
             }
             /*
             if (assignedLight)
