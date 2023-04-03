@@ -37,15 +37,18 @@ public class TriggerManager : MonoBehaviour
 
         foreach (TriggerAction Ta in TriggersInScene)
         {
-            Ta.TriggerObject.assignedLight = Ta.light.gameObject;
-            //Ta.TriggerObject.
-
+            //Ta.TriggerObject.assignedLight = Ta.light.gameObject;
+            Ta.TriggerObject.assignedTrap = Ta.bomb.gameObject;
 
             Ta.TriggerObject.playerEnter += TriggerObservation;
             Ta.TriggerObject.playerExit += TriggerObservation;
         }
     }
 
+    void Update()
+    {
+        
+    }
     
     public void TriggerObservation(string message) 
     {
@@ -54,9 +57,8 @@ public class TriggerManager : MonoBehaviour
     
     }
 
-    // Update is called once per frame
-    void Update()
+    public void FlowerBomb()
     {
-        
+
     }
 }

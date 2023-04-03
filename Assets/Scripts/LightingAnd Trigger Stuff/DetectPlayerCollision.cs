@@ -15,8 +15,8 @@ public class DetectPlayerCollision : MonoBehaviour
     public GameObject Player;
     public CharacterController PlayerCollisionObject;
 
-    public GameObject assignedLight;
-    public int assignedLightID;
+    //public GameObject assignedLight;
+    //public int assignedLightID;
 
     public GameObject assignedTrap;
     public int assignedTrapID;
@@ -34,6 +34,11 @@ public class DetectPlayerCollision : MonoBehaviour
     {
         if (other == PlayerCollisionObject)
         {
+            if (assignedTrap)
+            {
+
+            }
+            /*
             if (assignedLight)
             {
                 LightManager.instance.TurnOnLight(assignedLight);
@@ -41,7 +46,7 @@ public class DetectPlayerCollision : MonoBehaviour
             else { 
                 LightManager.instance.TurnOnLight(assignedLightID); 
                 Debug.Log("use ID"); 
-            }
+            }*/
         }
 
 
@@ -67,12 +72,15 @@ public class DetectPlayerCollision : MonoBehaviour
     {
         if (other == PlayerCollisionObject)
         {
-
-          if (assignedLight) 
+            /*
+            if (assignedLight) 
             { 
                 LightManager.instance.TurnOffLight(assignedLight); 
             }
-          else{ LightManager.instance.TurnOffLight(assignedLightID); }
+            else
+            { 
+                LightManager.instance.TurnOffLight(assignedLightID); 
+            }*/
 
 
             playerExit?.Invoke(null);

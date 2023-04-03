@@ -9,7 +9,7 @@ public class TriggerAction
 {
 
     public DetectPlayerCollision TriggerObject;
-    public Light light;
-
+    //public Light light;
+    public GameObject bomb;
 
 }
