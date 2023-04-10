@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 //using UnityEngine = UnityEngine.Random;
@@ -16,6 +14,8 @@ public class DetectPlayerCollision : MonoBehaviour
 
     [SerializeField]
     private GameObject flowerBomb;
+    [SerializeField]
+    private float bombObjScale = 5f;
 
     //public GameObject assignedLight;
     //public int assignedLightID;
@@ -55,8 +55,9 @@ public class DetectPlayerCollision : MonoBehaviour
                 for(int i = 0; i < 5; i++)
                 {
                     //triggerManager.FlowerBomb();
-                    GameObject newObject = Instantiate(flowerBomb, transform.position, Quaternion.identity, transform);
-                    Rigidbody rb = newObject.GetComponent<Rigidbody>();
+                    GameObject bombObj = Instantiate(flowerBomb, transform.position, Quaternion.identity, transform);
+                    Rigidbody rb = bombObj.GetComponent<Rigidbody>();
+                    bombObj.transform.localScale = new Vector3(bombObjScale, bombObjScale, bombObjScale);     // setting scale of new spawned objects
 
                     // so all the objects don't tilt the same way
                     Vector3 explosionDirection = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));

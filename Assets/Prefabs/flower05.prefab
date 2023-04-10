@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 112456499}
   m_Layer: 0
   m_Name: flower05
-  m_TagString: Untagged
+  m_TagString: dangerObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -404,9 +404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ce540832bac96419859939838b7f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  gravity: -9.8
-  explosionForce: 10
 --- !u!54 &2502198474419759865
 Rigidbody:
   m_ObjectHideFlags: 0
