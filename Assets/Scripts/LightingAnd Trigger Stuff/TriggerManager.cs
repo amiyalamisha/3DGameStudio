@@ -15,6 +15,8 @@ public class TriggerManager : MonoBehaviour
     public GameObject flowers;
     public Rigidbody bodyProjectile;
     public Transform startPos;
+    [SerializeField]
+    private float expObjNum = 3f;
 
 
     private void Awake()
@@ -63,8 +65,14 @@ public class TriggerManager : MonoBehaviour
 
     public void FlowerBomb()
     {
-        GameObject newFlowers = Instantiate(flowers, startPos.position, Quaternion.identity);
-        //newFlowers.transform.position = new Vector3(0, 5f * -1 * Time.deltaTime, 0);
-        Debug.Log("flowerbomb");
+        for(int i = 0 ; i < expObjNum; i++)
+        {
+            GameObject newFlowers = Instantiate(flowers, startPos.position, Quaternion.identity);
+            //newFlowers.transform.position = new Vector3(0, 5f * -1 * Time.deltaTime, 0);
+
+
+            Debug.Log("flowerbomb");
+        }
+
     }
 }

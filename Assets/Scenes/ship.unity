@@ -1774,6 +1774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1451253019}
   PlayerCollisionObject: {fileID: 1451253018}
+  flowerBomb: {fileID: 2502198474419858525, guid: 59bd4ddc75eacad48b99bfd4b7561492, type: 3}
   assignedTrap: {fileID: 2107135548}
   assignedTrapID: 0
   vCamToSwitch: 
@@ -2933,7 +2934,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34638
+  m_Name: pb_Mesh28706
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -7256,6 +7257,7 @@ MonoBehaviour:
   flowers: {fileID: 102924529}
   bodyProjectile: {fileID: 0}
   startPos: {fileID: 103095505}
+  expObjNum: 0
 --- !u!4 &747055823
 Transform:
   m_ObjectHideFlags: 0
@@ -21738,6 +21740,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2502198474420154493, guid: 59bd4ddc75eacad48b99bfd4b7561492, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539736956544058509, guid: 59bd4ddc75eacad48b99bfd4b7561492, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
