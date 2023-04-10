@@ -7,10 +7,13 @@ using Random = UnityEngine.Random;
 
 public class DetectPlayerCollision : MonoBehaviour
 {
+    public event Action<string> playerEnter = delegate { };
+    public event Action<string> playerExit = delegate { };
+
     private TriggerManager triggerManager;
 
     public GameObject Player;
-    public CharacterController PlayerCollisionObject;
+    public CharacterController PlayerCharacter;
 
     [SerializeField]
     private GameObject flowerBomb;
@@ -23,11 +26,13 @@ public class DetectPlayerCollision : MonoBehaviour
     public GameObject assignedTrap;
     public int assignedTrapID;
     private bool trapOff = false;
+    [SerializeField]
+    private bool trapExplosion = false;
+    [SerializeField]
+    private bool trapShoot = false;
 
     public string vCamToSwitch;
 
-    public event Action<string> playerEnter = delegate { };
-    public event Action<string> playerExit = delegate { };
 
     void Start()
     {
@@ -38,7 +43,7 @@ public class DetectPlayerCollision : MonoBehaviour
     {
         //Player = FindObjectOfType<PlayerCharacterLogic>().gameObject;
         Player = this.gameObject;
-        PlayerCollisionObject.GetComponent<CharacterController>();
+        PlayerCharacter.GetComponent<CharacterController>();
     }
 
     private void Update()
@@ -48,11 +53,12 @@ public class DetectPlayerCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == PlayerCollisionObject)
-        {
-            if (assignedTrap && !trapOff)
+        if (other == PlayerCharacter)
+        {   
+            if (assignedTrap && trapExplosion && !trapOff)
             {
-                for(int i = 0; i < 5; i++)
+                float randSpawn = Random.Range(5.0f, 9.0f);
+                for (int i = 0; i < randSpawn; i++)
                 {
                     //triggerManager.FlowerBomb();
                     GameObject bombObj = Instantiate(flowerBomb, transform.position, Quaternion.identity, transform);
@@ -66,6 +72,26 @@ public class DetectPlayerCollision : MonoBehaviour
 
                 trapOff = true;
             }
+
+            if(assignedTrap && trapShoot && !trapOff)
+            {
+                float randSpawn = Random.Range(5.0f, 9.0f);
+                for (int i = 0; i < randSpawn; i++)
+                {
+                    //Quaternion spawnAngle = new Quaternion(90f, 90f, 0f);     // setting defined spawn rotation
+
+                    GameObject bombObj = Instantiate(flowerBomb, transform.position, Quaternion.identity, transform);
+                    Rigidbody rb = bombObj.GetComponent<Rigidbody>();
+                    bombObj.transform.localScale = new Vector3(bombObjScale, bombObjScale, bombObjScale);     // setting scale of new spawned objects
+
+                    // so all the objects don't tilt the same way
+                    //Vector3 explosionDirection = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
+                    rb.AddForce(Vector3.right * 10f, ForceMode.Impulse);        // adding force to obj not velocity
+                }
+
+                trapOff = true;
+            }
+
             /*
             if (assignedLight)
             {
@@ -98,7 +124,7 @@ public class DetectPlayerCollision : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other == PlayerCollisionObject)
+        if (other == PlayerCharacter)
         {
             /*
             if (assignedLight) 
@@ -119,7 +145,7 @@ public class DetectPlayerCollision : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other == PlayerCollisionObject)
+        if (other == PlayerCharacter)
         {
           //  Debug.Log("Trigger Stay");
         }
