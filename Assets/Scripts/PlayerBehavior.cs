@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
+    private GameManager gameManager;
+
     void Start()
     {
-        
+        gameManager = GameManager.instance;
     }
 
     void Update()
@@ -22,6 +24,17 @@ public class PlayerBehavior : MonoBehaviour
         {
             Debug.Log("danger");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);     // reloading current scene
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "potion")
+        {
+            gameManager.potionsCollected++;
+            Debug.Log(gameManager.potionsCollected);
+
+            Destroy(other.gameObject);      // smoke effect here
         }
     }
 }

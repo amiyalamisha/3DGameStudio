@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public int potionsCollected = 0;
 
     public static GameManager instance;
 
@@ -22,13 +23,11 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log(potionsCollected);
     }
 
-    // Update is called once per frame
     void Update()
     {
         

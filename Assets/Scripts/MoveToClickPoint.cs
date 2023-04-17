@@ -43,11 +43,12 @@ public class MoveToClickPoint : MonoBehaviour
     private void FixedUpdate()
     {
 
-       // speed = GetComponent<NavMeshAgent>().velocity.magnitude;
+        speed = GetComponent<NavMeshAgent>().velocity.magnitude;
 
-      //  ani.SetFloat("Speed",speed);
+        ani.SetFloat("Speed",speed);
+        ani.SetFloat("MotionSpeed", 1);
            
-      //  print(speed);
+        Debug.Log(speed);
     }
 
   
