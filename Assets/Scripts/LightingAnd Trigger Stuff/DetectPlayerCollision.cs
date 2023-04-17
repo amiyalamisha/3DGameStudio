@@ -25,6 +25,7 @@ public class DetectPlayerCollision : MonoBehaviour
 
     public GameObject assignedTrap;
     public int assignedTrapID;
+    [SerializeField]
     private bool trapOff = false;
     [SerializeField]
     private bool trapExplosion = false;
@@ -78,12 +79,13 @@ public class DetectPlayerCollision : MonoBehaviour
                 float randSpawn = Random.Range(5.0f, 9.0f);
                 for (int i = 0; i < randSpawn; i++)
                 {
-                    //Quaternion spawnAngle = new Quaternion(90f, 90f, 0f);     // setting defined spawn rotation
+                    Quaternion spawnAngle = Quaternion.Euler(90f, 90f, 0f);     // setting defined spawn rotation
+                    Vector3 spawnPos = new Vector3(transform.position.x - 2f, transform.position.y);
 
-                    GameObject bombObj = Instantiate(flowerBomb, transform.position, Quaternion.identity, transform);
+                    GameObject bombObj = Instantiate(flowerBomb, spawnPos, spawnAngle, transform);
                     Rigidbody rb = bombObj.GetComponent<Rigidbody>();
                     bombObj.transform.localScale = new Vector3(bombObjScale, bombObjScale, bombObjScale);     // setting scale of new spawned objects
-
+                    Debug.Log("bomb");
                     // so all the objects don't tilt the same way
                     //Vector3 explosionDirection = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
                     rb.AddForce(Vector3.right * 10f, ForceMode.Impulse);        // adding force to obj not velocity
