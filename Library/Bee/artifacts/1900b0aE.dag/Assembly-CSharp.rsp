@@ -395,6 +395,7 @@
 "Assets/Scripts/LightingAnd Trigger Stuff/LightManager.cs"
 "Assets/Scripts/LightingAnd Trigger Stuff/TriggerAction.cs"
 "Assets/Scripts/LightingAnd Trigger Stuff/TriggerManager.cs"
+"Assets/Scripts/MoveToClickPoint.cs"
 "Assets/Scripts/PlayerBehavior.cs"
 "Assets/Scripts/SceneReload.cs"
 "Assets/Scripts/ThirdPersonController.cs"
