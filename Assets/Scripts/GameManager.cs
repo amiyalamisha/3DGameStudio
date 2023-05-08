@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public TextMeshProUGUI score;
+
     public int potionsCollected = 0;
 
     public static GameManager instance;
@@ -26,10 +29,17 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Debug.Log(potionsCollected);
+        potionsCollected = 0;
+        ChangeCollectedText();
     }
 
     void Update()
     {
         
+    }
+
+    public void ChangeCollectedText()
+    {
+        score.text = "Antidotes Collected: " + potionsCollected.ToString() + " / 10";
     }
 }
