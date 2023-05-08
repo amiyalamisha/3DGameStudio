@@ -20,6 +20,8 @@ public class DetectPlayerCollision : MonoBehaviour
     [SerializeField]
     private float bombObjScale = 5f;
 
+    [SerializeField]
+    private Transform objSpawn;
     //public GameObject assignedLight;
     //public int assignedLightID;
 
@@ -76,11 +78,12 @@ public class DetectPlayerCollision : MonoBehaviour
 
             if(assignedTrap && trapShoot && !trapOff)
             {
-                float randSpawn = Random.Range(5.0f, 9.0f);
+                float randSpawn = Random.Range(5.0f, 9.0f);         // number of flowers spawning
                 for (int i = 0; i < randSpawn; i++)
                 {
                     Quaternion spawnAngle = Quaternion.Euler(90f, 90f, 0f);     // setting defined spawn rotation
-                    Vector3 spawnPos = new Vector3(transform.position.x - 2f, transform.position.y);
+                    //Vector3 spawnPos = new Vector3(flowerBomb.transform.position.x, flowerBomb.transform.position.y);
+                    Vector3 spawnPos = new Vector3(objSpawn.transform.position.x, objSpawn.transform.position.y, objSpawn.transform.position.z);
 
                     GameObject bombObj = Instantiate(flowerBomb, spawnPos, spawnAngle, transform);
                     Rigidbody rb = bombObj.GetComponent<Rigidbody>();
