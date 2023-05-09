@@ -395,6 +395,7 @@
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/InputSystem/StarterAssetsInputs.cs"
 "Assets/Scripts/InteractableObj.cs"
+"Assets/Scripts/KeepOnLoad.cs"
 "Assets/Scripts/LightingAnd Trigger Stuff/DetectPlayerCollision.cs"
 "Assets/Scripts/LightingAnd Trigger Stuff/LightManager.cs"
 "Assets/Scripts/LightingAnd Trigger Stuff/TriggerAction.cs"

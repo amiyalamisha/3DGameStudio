@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerRB : MonoBehaviour
 {
     public PlayerBehavior playerBehavior;
-    [SerializeField] private float deathTime = 6f;
+    [SerializeField] private float deathTime = 4f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +22,10 @@ public class PlayerRB : MonoBehaviour
         {
             playerBehavior.playerAnimator.SetBool("dead", true);
 
+            StartCoroutine(WaitReloadScene());
+        }
+        if (other.gameObject.tag == "exit")
+        {
             StartCoroutine(WaitReloadScene());
         }
     }

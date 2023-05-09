@@ -33,6 +33,8 @@ public class DetectPlayerCollision : MonoBehaviour
     private bool trapExplosion = false;
     [SerializeField]
     private bool trapShoot = false;
+    [SerializeField]
+    private bool shootLeft = false;
 
     public string vCamToSwitch;
 
@@ -83,7 +85,16 @@ public class DetectPlayerCollision : MonoBehaviour
                 {
                     Quaternion spawnAngle = Quaternion.Euler(90f, 90f, 0f);     // setting defined spawn rotation
                     //Vector3 spawnPos = new Vector3(flowerBomb.transform.position.x, flowerBomb.transform.position.y);
-                    Vector3 spawnPos = new Vector3(objSpawn.transform.position.x, objSpawn.transform.position.y, objSpawn.transform.position.z);
+                    Vector3 spawnPos;
+                    if (shootLeft)
+                    {
+                        spawnPos = new Vector3(objSpawn.transform.position.x, objSpawn.transform.position.y, objSpawn.transform.position.z);
+                    }
+                    else
+                    {
+                        spawnPos = new Vector3(objSpawn.transform.position.x + .5f, objSpawn.transform.position.y, objSpawn.transform.position.z);
+                    }
+                    
 
                     GameObject bombObj = Instantiate(flowerBomb, spawnPos, spawnAngle, transform);
                     Rigidbody rb = bombObj.GetComponent<Rigidbody>();
@@ -91,7 +102,15 @@ public class DetectPlayerCollision : MonoBehaviour
                     Debug.Log("bomb");
                     // so all the objects don't tilt the same way
                     //Vector3 explosionDirection = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
-                    rb.AddForce(Vector3.right * 10f, ForceMode.Impulse);        // adding force to obj not velocity
+                    if (shootLeft)
+                    {
+                        rb.AddForce(Vector3.left * 8f, ForceMode.Impulse);        // adding force to obj not velocity
+                    }
+                    else
+                    {
+                        rb.AddForce(Vector3.right * 5f, ForceMode.Impulse);        // adding force to obj not velocity
+                    }
+                    
                 }
 
                 trapOff = true;

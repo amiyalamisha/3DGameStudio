@@ -35,16 +35,11 @@ public class PlayerBehavior : MonoBehaviour
         if(other.gameObject.tag == "potion")
         {
             gameManager.potionsCollected++;
+            gameManager.ChangeCollectedText();
             Debug.Log(gameManager.potionsCollected);
 
             Destroy(other.gameObject);      // smoke effect here
         }
     }
-
-    public void Death()
-    {
-        
-    }
-
     
 }

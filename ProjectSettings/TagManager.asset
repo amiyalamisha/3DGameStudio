@@ -7,6 +7,10 @@ TagManager:
   - CinemachineTarget
   - PlayerCharacterLogic
   - dangerObj
+  - trap_explosion
+  - trap_shoot
+  - potion
+  - exit
   layers:
   - Default
   - TransparentFX
