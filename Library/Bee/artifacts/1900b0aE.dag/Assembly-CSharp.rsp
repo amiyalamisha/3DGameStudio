@@ -404,6 +404,7 @@
 "Assets/Scripts/PlayerBehavior.cs"
 "Assets/Scripts/PlayerRB.cs"
 "Assets/Scripts/RandomTrapClusters.cs"
+"Assets/Scripts/SceneChange.cs"
 "Assets/Scripts/SceneReload.cs"
 "Assets/Scripts/ThirdPersonController.cs"
 "Assets/StarterAssets/Mobile/Scripts/CanvasInputs/UICanvasControllerInput.cs"
