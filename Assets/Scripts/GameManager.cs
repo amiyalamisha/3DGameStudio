@@ -6,14 +6,14 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI score;
-    public TextMeshProUGUI exitTxt;
+    public GameObject exitTxt;
 
     public int potionsCollected = 0;
-
-    public static GameManager instance;
-
     public InteractableObj interactableExitObj;
 
+    public AudioSource snd_pickup;
+
+    public static GameManager instance;
     private void Awake()
     {
 
@@ -31,10 +31,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        exitTxt.enabled = false;
+        exitTxt.SetActive(false);
         //Debug.Log(potionsCollected);
         potionsCollected = 0;
-        ChangeCollectedText();
+        score.text = "Antidotes Collected: " + potionsCollected.ToString() + " / 4";
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -42,15 +42,17 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(potionsCollected == 4)
+        if(potionsCollected > 3)
         {
-            exitTxt.enabled = true;
+            exitTxt.SetActive(true);
             interactableExitObj.allowExit = true;
+            Debug.Log("all potions collected");
         }
     }
 
     public void ChangeCollectedText()
     {
         score.text = "Antidotes Collected: " + potionsCollected.ToString() + " / 4";
+        snd_pickup.Play();
     }
 }
