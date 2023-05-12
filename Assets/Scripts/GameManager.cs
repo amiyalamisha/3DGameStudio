@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
         //Debug.Log(potionsCollected);
         potionsCollected = 0;
         ChangeCollectedText();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
