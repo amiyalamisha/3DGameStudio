@@ -10,15 +10,21 @@ public class RandomTrapClusters : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(trapList.Count);
         // Enable a random object from the list
         if (trapList.Count > 0)
         {
+            for(int i = 0; i < trapList.Count; i++)
+            {
+                trapList[i].SetActive(false);
+            }
+
             for(int i = 0; i < numTrapsEnabled; i++)
             {
                 int randomIndex = Random.Range(0, trapList.Count);
                 Debug.Log(randomIndex);
-                GameObject randomObject = trapList[randomIndex];
-                randomObject.SetActive(true);
+                //GameObject randomObject = trapList[randomIndex];
+                trapList[randomIndex].SetActive(true);
             }
         }
     }

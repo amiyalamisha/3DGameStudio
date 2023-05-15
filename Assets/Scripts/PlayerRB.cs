@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class PlayerRB : MonoBehaviour
 {
     public PlayerBehavior playerBehavior;
+
+    public AudioSource snd_death;
     //[SerializeField] private float deathTime = 4f;
 
     // Start is called before the first frame update
@@ -34,7 +36,14 @@ public class PlayerRB : MonoBehaviour
 
     public IEnumerator WaitReloadScene(float waitTime)
     {
+        if (playerBehavior.playerAnimator.GetBool("dead"))
+        {
+            snd_death.PlayDelayed(0.5f);
+        }
+
         yield return new WaitForSeconds(waitTime);
+        
+        
 
         playerBehavior.playerAnimator.SetBool("dead", false);
         playerBehavior.playerAnimator.SetBool("win", false);
