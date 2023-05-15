@@ -10,7 +10,6 @@ public class RandomTrapClusters : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(trapList.Count);
         // Enable a random object from the list
         if (trapList.Count > 0)
         {
